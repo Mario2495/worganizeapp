@@ -1,0 +1,19 @@
+:host{
+  display: block;
+margin-top: 1rem;
+}
+mat-accordion,
+mat-expansion-panel-header{
+
+  color: rgb(238, 238, 0);
+  background-color:#100041;
+}
+mat-accordion,
+mat-expansion-panel{
+  color: rgb(238, 238, 0);
+  background-color:#33311e;
+}
+.info-text{
+  text-align: center;
+  color:rgb(235, 61, 8);
+}

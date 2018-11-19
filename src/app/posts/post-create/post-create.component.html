@@ -1,0 +1,53 @@
+
+      <mat-card>
+        <form (submit) = "onAddPost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+          <input matInput
+          type="text"
+          name="title"
+          ngModel
+          minlength="3"
+          placeholder="Título del Ensayo"
+          required
+          #title="ngModel">
+          <mat-error *ngIf="title.invalid">Porfavor entre el mensaje de cosita</mat-error>
+        </mat-form-field>
+         <mat-form-field>
+           <textarea matInput
+           rows="4"
+           name="content"
+           ngModel
+           #content="ngModel"
+           placeholder="Descripción del Ensayo">
+           <mat-error *ngIf="content.invalid">Porfavor entre el contenido de cosita</mat-error>
+          </textarea>
+         </mat-form-field>
+         <mat-form-field>
+            <textarea matInput
+            rows="4"
+            name="songs"
+            ngModel
+            #songs="ngModel"
+            placeholder="Canciones y Enlace">
+            <mat-error *ngIf="content.invalid">Porfavor entre el contenido de cosita</mat-error>
+           </textarea>
+          </mat-form-field>
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" name="date"  ngModel  #date="ngModel"  placeholder="Dia del Ensayo">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+         <!-- vainding: como enviar informacion  #varable de refercia al tag-->
+         <button mat-raised-button
+         type="submit">Crear Ensayo</button>
+         <!-- interpolacion : esto permite enviar informacion del solr al view   -->
+        </form>
+      </mat-card>
+
+
+
+
+
+
+
