@@ -1,20 +1,22 @@
 <mat-accordion multi="true" *ngIf="posts.length > 0">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
-     {{post.title}}
+     <p>Título: {{post.title}}</p>
 
     </mat-expansion-panel-header>
-    <p>El Ensayo se realizará el: {{post.date}}</p>
-    <p>Descripción del Ensayo: {{post.content}}</p>
+    <p>Fecha: {{post.date}}</p>
+    <p>Descripción: {{post.content}}</p>
     <p>Canciones: {{post.songs}}</p>
     <mat-action-row>
-      <button mat-button color="accent" >Edit</button>
-      <button mat-button color="warn" (click)="onDelete(post.id)">Delete</button>
+      <!-- <button mat-button  >Edit</button> -->
+      <button mat-button (click)="onDelete(post.id)">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 <br>
+<br>
 <p class=" info-text mat-body-1" *ngIf="posts.length <= 0">AL MOMENTO NO HAY NINGUN ENSAYO PAUTADO</p>
+<br>
 <br>
 <br>
 <br>
