@@ -1,5 +1,9 @@
 main{
-  margin-top: 1rem;
+  margin-top: 10rem;
   width:   80%;
   margin: auto;
+}
+
+.background{
+  background-color: #009FB7;
 }
