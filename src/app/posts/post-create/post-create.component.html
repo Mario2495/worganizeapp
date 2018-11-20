@@ -1,39 +1,42 @@
 
       <mat-card>
-        <form (submit) = "onAddPost(postForm)" #postForm="ngForm">
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <form (submit) = "onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
           <h2>Crear un Ensayo</h2>
         <mat-form-field>
           <input matInput
           type="text"
           name="title"
-          ngModel
-          minlength="3"
-          placeholder="Título: " 
+          [ngModel]="post?.title"
           required
+          minlength="3"
+          placeholder="Título:"
           #title="ngModel">
           <mat-error *ngIf="title.invalid">Por favor, ingrese el título del ensayo</mat-error>
         </mat-form-field>
          <mat-form-field>
            <textarea matInput
+           rows="4"
            name="content"
-           ngModel
+           [ngModel]="post?.content"
+           required
            #content="ngModel"
            placeholder="Descripción: ">
+           </textarea>
            <mat-error *ngIf="content.invalid">Por favor, escriba una descripción</mat-error>
-          </textarea>
          </mat-form-field>
          <mat-form-field>
             <textarea matInput
             rows="4"
             name="songs"
-            ngModel
+            [ngModel]="post?.songs"
             placeholder="Canciones: "
             #songs="ngModel">
-            <mat-error *ngIf="songs.invalid">Por favor, ingrese la lista de canciones</mat-error>
            </textarea>
+           <mat-error *ngIf="songs.invalid">Por favor, ingrese la lista de canciones</mat-error>
           </mat-form-field>
          <mat-form-field>
-            <input matInput [matDatepicker]="picker" name="date"  ngModel required #date="ngModel"  placeholder="Fecha:">
+            <input matInput [matDatepicker]="picker" name="date"  [ngModel]="post?.date" required #date="ngModel"  placeholder="Fecha:">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -42,7 +45,7 @@
         <br>
         <br>
          <!-- vainding: como enviar informacion  #varable de refercia al tag-->
-          <button mat-raised-button type="submit">Crear Ensayo</button>
+          <button mat-raised-button type="submit">Insertar</button>
          <!-- interpolacion : esto permite enviar informacion del solr al view   -->
         </form>
       </mat-card>

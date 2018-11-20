@@ -4,8 +4,13 @@ textarea {
   width: 100%;
 
 }
+
 mat-raised-button,
 button{
   color: #E7E247;
   background-color: #696773;
+}
+
+mat-spinner {
+  margin: auto;
 }

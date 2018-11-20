@@ -16,6 +16,10 @@ mat-expansion-panel{
   background-color: #E7E247;
 }
 
+mat-spinner {
+  margin: auto;
+}
+
 .info-text{
   text-align: center;
   color:#E7E247;
