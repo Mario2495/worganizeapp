@@ -5,6 +5,9 @@
      <p>Título: {{post.title}}</p>
 
     </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="post.imagePath" [alt]="post.title">
+    </div>
     <p>Fecha: {{post.date}}</p>
     <p>Descripción: {{post.content}}</p>
     <p>Canciones: {{post.songs}}</p>
@@ -16,9 +19,5 @@
 </mat-accordion>
 <br>
 <br>
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"></mat-paginator>
 <p class=" info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">AL MOMENTO NO HAY NINGUN ENSAYO PAUTADO</p>
-<br>
-<br>
-<br>
-<br>
-<br>

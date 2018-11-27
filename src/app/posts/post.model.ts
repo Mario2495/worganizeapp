@@ -4,4 +4,5 @@ export interface Post {
   content: string;
   songs: string;
   date: string;
+  imagePath: string;
 }
