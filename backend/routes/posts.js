@@ -21,13 +21,18 @@ const storage = multer.diskStorage({
     cb(error, "backend/images");
   },
   filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(' ').join('-');
+    const name = file.originalname
+    .toLowerCase()
+    .split(' ')
+    .join('-');
     const ext = MIME_TYPE_MAP[file.mimetype];
     cb(null, name + '-' + Date.now() + '.' + ext);
   }
 });
 
-router.post("", multer({storage: storage}).single("image"), (req, res, next) => {
+router.post("",
+multer({storage: storage}).single("image"),
+(req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   const post = new Post({
     title: req.body.title,
@@ -45,7 +50,8 @@ router.post("", multer({storage: storage}).single("image"), (req, res, next) => 
       }
     });
   });
-});
+ }
+);
 
 router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) => {
   let imagePath = req.body.imagePath;
@@ -65,7 +71,8 @@ router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) 
   Post.updateOne({ _id: req.params.id}, post).then(result => {
     res.status(200).json({ message: "Update successful!" });
   });
-});
+ }
+);
 
 router.get("", (req, res, next) => {
   const pageSize = +req.query.pagesize;
@@ -79,7 +86,7 @@ router.get("", (req, res, next) => {
   }
   postQuery
   .then(documents => {
-    fetchedPosts = document;
+    fetchedPosts = documents;
     return Post.count();
   })
   .then(count => {
