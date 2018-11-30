@@ -19,11 +19,11 @@
 </mat-accordion>
 <br>
 <br>
-<<<<<<< HEAD
+
 <mat-paginator
 [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
  *ngIf="posts.length > 0"></mat-paginator>
-=======
+
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"></mat-paginator>
->>>>>>> parent of f742c07... Update
+
 <p class=" info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">AL MOMENTO NO HAY NINGUN ENSAYO PAUTADO</p>
