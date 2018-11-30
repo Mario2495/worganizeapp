@@ -20,9 +20,14 @@ export class PostListComponent implements OnInit, OnDestroy {
   // ];
   posts: Post[] = [];
   isLoading = false;
+<<<<<<< HEAD
   totalPosts = 0;
   postsPerPage = 2;
   currentPage = 1;
+=======
+  totalPosts = 10;
+  postsPerPage = 5;
+>>>>>>> parent of f742c07... Update
   pageSizeOptions = [1, 2 , 5, 10];
   userIsAuthenticated = false;
   private postsSub: Subscription;
@@ -32,29 +37,22 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.postsService.getPosts(this.postsPerPage, this.currentPage);
+    this.postsService.getPosts();
     this.postsSub = this.postsService.getPostUpdateListener()
-      .subscribe((postData: {posts: Post[], postCount: number}) => {
+      .subscribe((posts: Post[]) => {
         this.isLoading = false;
-        this.totalPosts = postData.postCount;
-        this.posts = postData.posts;
+        this.posts = posts;
       });
       this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
   }
     onChangedPage(pageData: PageEvent) {
-      this.isLoading = true;
-      this.currentPage = pageData.pageIndex + 1;
-      this.postsPerPage = pageData.pageSize;
-      this.postsService.getPosts(this.postsPerPage, this.currentPage);
+      console.log(pageData);
     }
 
     onDelete(postId: string) {
-      this.isLoading = true;
-       this.postsService.deletePost(postId).subscribe(() => {
-         this.postsService.getPosts(this.postsPerPage, this.currentPage);
-       });
+       this.postsService.deletePost(postId);
     }
 
     ngOnDestroy() {

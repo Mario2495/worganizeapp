@@ -82,12 +82,12 @@ router.get("", (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
   const postQuery = Post.find();
-  let fetchedPosts;
   if (pageSize && currentPage) {
     postQuery
       .skip(pageSize * (currentPage - 1))
       .limit(pageSize);
   }
+<<<<<<< HEAD
   postQuery
   .then(documents => {
     fetchedPosts = documents;
@@ -95,9 +95,12 @@ router.get("", (req, res, next) => {
   })
   .then(count => {
     res.status(200).json ({
+=======
+  postQuery.then(documents => {
+    res.status(200).json({
+>>>>>>> parent of f742c07... Update
       message: "Posts fetched successfully!",
-      posts: fetchedPosts,
-      maxPosts: count
+      posts: documents
     });
   });
 });
