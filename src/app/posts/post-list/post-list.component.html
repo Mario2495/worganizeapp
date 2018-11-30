@@ -11,7 +11,7 @@
     <p>Fecha: {{post.date}}</p>
     <p>Descripción: {{post.content}}</p>
     <p>Canciones: {{post.songs}}</p>
-    <mat-action-row $ngIf="userIsAuthenticated">
+    <mat-action-row>
       <a mat-button [routerLink]="['/edit', post.id]">Editar</a>
       <button mat-button (click)="onDelete(post.id)">Eliminar</button>
     </mat-action-row>
@@ -19,6 +19,7 @@
 </mat-accordion>
 <br>
 <br>
+<<<<<<< HEAD
 
 <mat-paginator
 [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
@@ -26,4 +27,7 @@
 
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"></mat-paginator>
 
+=======
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" + *ngIf="posts.length > 0"></mat-paginator>
+>>>>>>> parent of d1ad7b5... Authentication
 <p class=" info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">AL MOMENTO NO HAY NINGUN ENSAYO PAUTADO</p>
